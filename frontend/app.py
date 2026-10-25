@@ -64,7 +64,7 @@ if st.button("Predict", type="primary"):
     try:
         response = requests.post(f"{BACKEND_URL}/v1/predict", json=input_data, timeout=30)  # Send data to Flask API
         if response.status_code == 200:
-            prediction = response.json()["Predicted Sales Total"]
+            prediction = response.json()["Sales"]
             st.success(f"Predicted total sales for this product in this store: {prediction:,.2f}")
         else:
             st.error(f"The prediction API returned status code {response.status_code}.")
